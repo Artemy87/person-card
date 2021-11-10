@@ -1,0 +1,30 @@
+.app {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 76px 196px 1fr 76px;
+  min-height: 100vh;
+}
+
+.pageHeader {
+  grid-column: 1/4;
+  text-align: center;
+}
+
+.pagePerson {
+  grid-column-start: 2;
+  /* grid-row-start: 2; */
+  width: 616px;
+}
+
+.pageChildren {
+  grid-column-start: 2;
+  /* grid-row-start: 3; */
+  width: 616px;
+}
+
+.pageFooter {
+  grid-column: 1 / 4;
+  grid-row-start: 4;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}

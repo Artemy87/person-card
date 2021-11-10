@@ -1,0 +1,34 @@
+.form {
+  font-weight: 400;
+  height: 56px;
+  width: 242px;
+  border: 1px solid #f1f1f1;
+  border-radius: 4px;
+  padding-top: 8px;
+  padding-left: 16px;
+  margin-right: 18px;
+}
+
+.formName {
+  font-size: 13px;
+  color: rgba(17, 17, 17, 0.48);
+  margin-bottom: 2px;
+}
+
+.formAge {
+  font-size: 13px;
+  color: rgba(17, 17, 17, 0.48);
+  margin-bottom: 2px;
+}
+
+.buttonRemove {
+  font-family: Montserrat;
+  font-size: 14px;
+  padding: 0px;
+  cursor: pointer;
+  border: none;
+  background-color: #ffff;
+  color: #01a7fd;
+}
+
+

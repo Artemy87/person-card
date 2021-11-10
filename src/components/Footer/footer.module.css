@@ -1,0 +1,7 @@
+.footer {
+  display: grid;
+  font-size: 13px;
+  height: 76px;
+  background: #fafafa;
+  place-items: center;
+}
