@@ -5,13 +5,8 @@ import styles from "./children-list-item.module.css";
 
 export default class ChildrenListItem extends Component {
 
-  removeChildren = () => {
-    console.log(this.props.name)
-  }
-
   render() {
-
-    const { name, age } = this.props;
+    const { name, age, onDeleted } = this.props;
 
     return (
       <>
@@ -25,7 +20,7 @@ export default class ChildrenListItem extends Component {
         </div>
         <button
           className={styles.buttonRemove}
-          onClick={this.removeChildren}
+          onClick={onDeleted}
           >Удалить</button>
       </>
     );

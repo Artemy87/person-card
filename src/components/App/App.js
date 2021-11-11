@@ -7,18 +7,28 @@ import Footer from "../Footer";
 
 import styles from "./app.module.css";
 
-const personData = [
-  { id: 0, name: "Иван", age: 10 },
-  { id: 1, name: "Петр", age: 14 },
-];
-
-const removeChildren = (personData) => {
-  return (
-    console.log(personData.name)
-  )
-}
 
 export default class App extends Component {
+
+  state = {
+    personData: [
+      { id: 0, name: "Иван", age: 10 },
+      { id: 1, name: "Петр", age: 14 },
+    ]
+  }
+
+  deleteItem = (id) => {
+    this.setState(({ personData }) => {
+      const index = personData.findIndex((el) => el.id === id);
+      return {
+        personData: [
+          ...personData.slice(0, index),
+          ...personData.slice(index + 1)
+        ]
+      };
+    })
+  }
+
   render() {
     return (
       <div className={styles.app}>
@@ -30,8 +40,8 @@ export default class App extends Component {
         </div>
         <div className={styles.pageChildren}>
           <ChildrenList
-            personData={personData}
-            removeChildren={removeChildren}
+            personData={this.state.personData}
+            onDeleted={this.deleteItem}
             />
         </div>
         <div className={styles.pageFooter}>
