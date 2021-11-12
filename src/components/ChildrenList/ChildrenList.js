@@ -4,7 +4,7 @@ import imagePlus from "./image/plus.svg";
 
 import styles from "./children-list.module.css";
 
-const ChildrenList = ({ personData, onDeleted }) => {
+const ChildrenList = ({ personData, onDeleted, onAdd }) => {
   const elements = personData.map((item) => {
     const { id, ...itemProps } = item;
     return (
@@ -23,7 +23,8 @@ const ChildrenList = ({ personData, onDeleted }) => {
       </div>
       <button 
         className={styles.listButtonAdd}
-        onClick={() => console.log('add: ' + personData[0].name + ' ' + personData[0].age)}>
+        onClick={ onAdd }
+        >
         <img src={imagePlus} alt="#" />
         <span>Добавить ребенка</span>
       </button>

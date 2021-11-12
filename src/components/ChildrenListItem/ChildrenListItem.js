@@ -10,14 +10,18 @@ export default class ChildrenListItem extends Component {
 
     return (
       <>
-        <div className={styles.form}>
+        <form className={styles.form}>
           <div className={styles.formName}>Имя</div>
-          <div>{name}</div>
-        </div>
-        <div className={styles.form}>
+          <input 
+            type='text'
+            className={styles.inputName} />
+        </form>
+        <form className={styles.form}>
           <div className={styles.formAge}>Возраст</div>
-          <div>{age}</div>
-        </div>
+          <input 
+            type='text'
+            className={styles.inputAge} />
+        </form>
         <button
           className={styles.buttonRemove}
           onClick={onDeleted}

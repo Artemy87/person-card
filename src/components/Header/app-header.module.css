@@ -19,3 +19,11 @@
   cursor: pointer;
   color: rgba(17, 17, 17, 0.48);
 }
+
+.headerForm a:first-child {
+  margin-right: 12px;
+}
+
+.headerForm a:last-child {
+  margin-left: 12px;
+}

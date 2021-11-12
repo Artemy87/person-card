@@ -10,10 +10,11 @@ import styles from "./app.module.css";
 
 export default class App extends Component {
 
+  idItem = 100;
+
   state = {
     personData: [
-      { id: 0, name: "Иван", age: 10 },
-      { id: 1, name: "Петр", age: 14 },
+      this.createItem()
     ]
   }
 
@@ -29,6 +30,21 @@ export default class App extends Component {
     })
   }
 
+  createItem(name=null, age=null) {
+    return {id: this.idItem++, name, age}
+  };
+
+  addItem = (name, age) => {
+    this.setState(({ personData }) => {
+      return {
+        personData: [
+          ...personData,
+          this.createItem(name, age)
+        ]
+      };
+    });
+  };
+
   render() {
     return (
       <div className={styles.app}>
@@ -42,6 +58,7 @@ export default class App extends Component {
           <ChildrenList
             personData={this.state.personData}
             onDeleted={this.deleteItem}
+            onAdd={this.addItem}
             />
         </div>
         <div className={styles.pageFooter}>
