@@ -5,12 +5,13 @@ import imagePlus from "./image/plus.svg";
 import styles from "./children-list.module.css";
 
 const ChildrenList = ({ personData, onDeleted, onAdd, saveClick }) => {
+ debugger;
   const elements = personData.map((item) => {
     const { id, ...itemProps } = item;
 
     return (
       <div key={id} className={styles.listItem}>
-        <ChildrenListItem 
+        <ChildrenListItem git
           {...personData}
           onDeleted={() => onDeleted(id)}
           onAdd={() => onAdd}

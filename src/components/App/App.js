@@ -18,14 +18,15 @@ export default class App extends Component {
   deleteItem = (id) => {
     this.setState(({ personData }) => {
       const ind = personData.findIndex((el) => el.id === id);
+
       return {
           personData: [...personData.slice(0, ind), ...personData.slice(ind + 1)],
       };
     });
   };
 
-  createItem(name, age) {
-    return {id: this.ID++, name, age, children: []};
+  createItem(name = null, age = null) {
+    return {id: this.ID++, name: 'Vasiliy', age, children: []};
   };
 
   addItem = (name, age) => {
@@ -41,23 +42,23 @@ export default class App extends Component {
   }
 
   render() {
+
+    const formPersonCardComponent =
+        <FormPersonCard
+          personData={this.state.personData}
+          deleteItem={this.deleteItem}
+          addItem={this.addItem}
+          saveClick={this.saveClick}
+        />;
+
     return (
       <div className={styles.app}>
         <AppHeader />
         <Routes>
-          <Route
-            path={'/form'}
-            element={ <FormPersonCard
-                personData={this.state.personData}
-                deleteItem={this.deleteItem}
-                addItem={this.addItem}
-                saveClick={this.saveClick}
-                />
-            } />
-          <Route
-            path='/preview'
-            element={ <ViewPersonCard
-              personData={this.state.personData} /> } />
+          <Route path='/form' element={ formPersonCardComponent }/>
+          <Route path='/preview' element={
+            <ViewPersonCard personData={this.state.personData} />}/>
+          <Route path='*' element={ formPersonCardComponent }/>
         </Routes>
         <Footer />
       </div>

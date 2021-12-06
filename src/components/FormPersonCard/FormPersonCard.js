@@ -6,7 +6,8 @@ import styles from './FormPersonCard.module.css';
 
 
 const FormPersonCard = ({ personData, deleteItem, addItem, saveClick }) => {
-  return (
+  debugger;
+    return (
     <>
         <div className={styles.pagePerson}>
             <Person />
