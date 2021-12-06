@@ -4,4 +4,9 @@
   height: 76px;
   background: #fafafa;
   place-items: center;
+
+  grid-column: 1 / 4;
+  grid-row-start: 4;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }

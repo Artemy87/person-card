@@ -1,0 +1,9 @@
+.pagePerson {
+  grid-column-start: 2;
+  width: 616px;
+}
+
+.pageChildren {
+  grid-column-start: 2;
+  width: 616px;
+}

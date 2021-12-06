@@ -2,14 +2,14 @@ import React from 'react';
 
 import styles from './view-person-card.module.css';
 
-const ViewPersonCard = () => {
+
+const ViewPersonCard = ({ personData }) => {
   return (
-    <div className={styles.viewPersonCard}>
-      <h1>Персональные данные</h1>
-      <h2>Василий, 30 лет</h2>
-      <h2>Дети</h2>
-      <h2>Петр, 10 лет</h2>
-      <h2>Васлилй, 14 лет</h2>
+    <div className={styles.person_card}>
+      <div className={styles.header_person_card}>Персональные данные</div>
+      <div className={styles.name_person_card}>{personData[0].name}</div>
+      <div className={styles.header_child}>Дети</div>
+      <div className={styles.name_child}>Петр, 10 лет</div>
   </div>
   )
 }

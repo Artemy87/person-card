@@ -1,70 +1,65 @@
 import React, { Component } from "react";
 import AppHeader from "../Header";
-import Person from "../Person";
-import ChildrenList from "../ChildrenList";
-// import ViewPersonCard from "./components/View/ViewPersonCard";
+import FormPersonCard from "../FormPersonCard";
+import ViewPersonCard from "../View";
 import Footer from "../Footer";
+import { Routes, Route } from 'react-router-dom';
 
 import styles from "./app.module.css";
 
 
 export default class App extends Component {
-
-  idItem = 100;
+  ID = 100;
 
   state = {
-    personData: [
-      this.createItem()
-    ]
+    personData: [this.createItem()]
   }
 
   deleteItem = (id) => {
     this.setState(({ personData }) => {
-      const index = personData.findIndex((el) => el.id === id);
+      const ind = personData.findIndex((el) => el.id === id);
       return {
-        personData: [
-          ...personData.slice(0, index),
-          ...personData.slice(index + 1)
-        ]
+          personData: [...personData.slice(0, ind), ...personData.slice(ind + 1)],
       };
-    })
-  }
+    });
+  };
 
-  createItem(name=null, age=null) {
-    return {id: this.idItem++, name, age}
+  createItem(name, age) {
+    return {id: this.ID++, name, age, children: []};
   };
 
   addItem = (name, age) => {
     this.setState(({ personData }) => {
       return {
-        personData: [
-          ...personData,
-          this.createItem(name, age)
-        ]
+        personData: [...personData, this.createItem(name, age)],
       };
     });
   };
 
+  saveClick(){
+    console.log('Написать ф-ю onClick в app.js')
+  }
+
   render() {
     return (
       <div className={styles.app}>
-        <div className={styles.pageHeader}>
-          <AppHeader />
-        </div>
-        <div className={styles.pagePerson}>
-          <Person />
-        </div>
-        <div className={styles.pageChildren}>
-          <ChildrenList
-            personData={this.state.personData}
-            onDeleted={this.deleteItem}
-            onAdd={this.addItem}
-            />
-        </div>
-        <div className={styles.pageFooter}>
-          <Footer />
-        </div>
-        {/* <ViewPersonCard /> */}
+        <AppHeader />
+        <Routes>
+          <Route
+            path={'/form'}
+            element={ <FormPersonCard
+                personData={this.state.personData}
+                deleteItem={this.deleteItem}
+                addItem={this.addItem}
+                saveClick={this.saveClick}
+                />
+            } />
+          <Route
+            path='/preview'
+            element={ <ViewPersonCard
+              personData={this.state.personData} /> } />
+        </Routes>
+        <Footer />
       </div>
     );
   }

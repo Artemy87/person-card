@@ -4,14 +4,17 @@ import imagePlus from "./image/plus.svg";
 
 import styles from "./children-list.module.css";
 
-const ChildrenList = ({ personData, onDeleted, onAdd }) => {
+const ChildrenList = ({ personData, onDeleted, onAdd, saveClick }) => {
   const elements = personData.map((item) => {
     const { id, ...itemProps } = item;
+
     return (
       <div key={id} className={styles.listItem}>
         <ChildrenListItem 
-          {...itemProps}
-          onDeleted={() => onDeleted(id)} />
+          {...personData}
+          onDeleted={() => onDeleted(id)}
+          onAdd={() => onAdd}
+        />
       </div>
     );
   });
@@ -23,13 +26,14 @@ const ChildrenList = ({ personData, onDeleted, onAdd }) => {
       </div>
       <button 
         className={styles.listButtonAdd}
-        onClick={ onAdd }
-        >
+        onClick={ onAdd }>
         <img src={imagePlus} alt="#" />
         <span>Добавить ребенка</span>
       </button>
       <div className={styles.listItems}>{elements}</div>
-      <button className={styles.listButtonSave}>Сохранить</button>
+      <button
+        className={styles.listButtonSave}
+        onClick={saveClick}>Сохранить</button>
     </div>
   );
 };
